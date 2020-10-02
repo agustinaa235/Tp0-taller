@@ -47,9 +47,9 @@
   ![Errores paso 1](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso1.png)
 
 
-El primer error que aparece es que no encuentra el tipo de dato wordscounter_t ya que nunca incluyo el archivo paso1_wordscounter.h donde ahi 
-estaria definido la estructura wordscounter_t y la firma de las distintas funciones.
-Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no encontar el include del paso1_wordscounter.h no encuenta donde estan declaradas esas funciones. En todos los casos se trata de un error de compilacion.
+  El primer error que aparece es que no encuentra el tipo de dato wordscounter_t ya que nunca incluyo el archivo paso1_wordscounter.h donde ahi 
+  estaria definido la estructura wordscounter_t y la firma de las distintas funciones.
+  Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no encontar el include del paso1_wordscounter.h no encuenta donde estan declaradas     esas funciones. En todos los casos se trata de un error de compilacion.
 
  ![Errores normas de programacion](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso1parte2.png)
  
@@ -57,9 +57,9 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
  * El error de la linea 41 se refiere a que no hay qe dejar un doble espcail luego de usar el if ej: if (c== EOF)
  * El error de la linea 47 se refiere a a que no si se viene usando un c}ierto criterio con el tema de las llaves seguirlo y no camiarlo. eje:
    ```
-   if ( a>b){
+   if (a>b) {
         return 0;
-    }else if ( a<b){
+    }else if (a<b) {
         return 3;
     }else {
         return 2;
@@ -69,7 +69,7 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
  * El error de la linea 53 se refiere a que una vez que termina una palabra en la terminacion de una linea de codigo al lado de la palbra va el; ej: return 0;
  * El error de la linea se refiere a que no se llega a ver el comentario entero, es mejor que el largo sea menor o igual a 80 caracteres 
  
-3.**Paso2 **
+3.**Paso2**
 
   3.**Errores de generacion 2**
    
@@ -77,18 +77,54 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
 
    podemos Observar que se realizaron los cambios mensionados en el paso 1 con respecto a los errores de normas de porgramacion 
    se cambio:
-      * while(state != STATE_FINISHED) por while (state != STATE_FINISHED)
-      * if (  c == EOF) por if (c == EOF)
-      * return next_state ; por un return next_state; 
-      * if(strchr(delim_words, c) != NULL) por if (strchr(delim_words, c) != NULL)
-      * reduco la cantidad de palabras delcomentarios de la linea 5 en el paso2_wordscounter.h
+   * while(state != STATE_FINISHED) por while (state != STATE_FINISHED)
+   * if (  c == EOF) por if (c == EOF)
+   * return next_state ; por un return next_state; 
+   * if(strchr(delim_words, c) != NULL) por if (strchr(delim_words, c) != NULL)
+   * reduco la cantidad de palabras delcomentarios de la linea 5 en el paso2_wordscounter.h
       
-    
 
  ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte1.png)
  ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte2.png)
  
-   
+  * los primeros errores que aparecen es sobre size_t ya que no lo reconoce, esto sucede por que no importo la bibliotecastdef.h con  #include <stddef.h> en el       paso2_wordscounter.h
+  * El eror de la linea 25 cuando no reconce FILE es porque no incluyo la biblioteca de stdio.h con  #include <stdio.h>
+  * El error de la linea 30 significa que no incluyo la libreria de stdlib.h con #include<stdlib.h> cuando invoca la funcion malloc
+  * El error en la linea 20 del .h y en la 17.c significa que se esta definiendo a una misma funcion con diferentes firmas 
+  
+ 4.**Errores de generacion 3**
+  ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso3.png)
+  
+  Se incluyencion las corresponientes librerias mensionadas en el inciso anterior y se arreglo el error de la linea 20 del .h y 17 del .c
+  
+  * El error en la linea 27 de main.c lo tira porque esa funcion la encuntra en el .h pero no se encuentra implemnetada en el .c
+  
+  5.**Memory Leaks y Buffer Overflows** 
+  
+  Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
+  Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas. Podemos observar que las prubeas de TDA de longname por ejemplo fallaron con valgrind
+  ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte1Paso4.png)
+  ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png)
+  
+  *una de las perdida de memoria es cuando se invoca a la funcion "static char wordscounter_next_state(wordscounter_t *self, char state, char c)"
+  donde se hace un malloc donde se reserva un espacio de 7 punteros a char y esa memoria no es liberada.
+  * Hay otro error relacionado con el archivo, en donde se hace un fopne pero nunca un fclose.
+  
+  
+  ![Errores de la prueba long-name](https://github.com/agustinaa235/tp0/blob/master/LongFileNameErrorPaso4.png)
+  ![Errores de la prueba long-name](https://github.com/agustinaa235/tp0/blob/master/LongFileNameErrorParte2Paso4.png.png)
+  
+  En esta prueba valgrind tira errores de:
+  
+  * Hay un archivo abierto y este nunca se cerro
+  * Otro error que tira es en el llamado de la funcion memcpy donde se genera un buffer overfloat, que significa que se escirbio informacion en un espacio de         memoria en la cual el programador no tenia acceso. Esto se genero debido a que no hubo un chequeo sobre que tan largo es lo que uno va a copiar en que vas         con respecto al especio de memoria que tiene disponible para realizar la copia. 
+    utilizando la funcion  strncpy se solucionaria este problema ya que estas funciones si permiten definir un limite nada mas que es responsabilidad del             programador utiliazar valores coherentes para la definicion de ese limite. Si se hubiera utilizado esta funcion con un limite acorde, no se produciria el         error de buffer overfloat.
+    
+  
+
+  
+  
+  
  
    
  
