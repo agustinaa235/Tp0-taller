@@ -40,7 +40,7 @@
  
  2.**Paso 1**
  
-   2. **Sercom Errores de generacion y normas de programacion
+   2. **Sercom Errores de generacion y normas de programacion**
    
    Al subir el zip del paso 1 al sercom, cuando compila informa lo siguiente:
    
@@ -56,18 +56,30 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
  * El error de la linea 27 se refiere a que hay que dejar un espacio luego de usar un while ej: while (state != STATE_FINISHED)
  * El error de la linea 41 se refiere a que no hay qe dejar un doble espcail luego de usar el if ej: if( c== EOF)
  * El error de la linea 47 se refiere a a que no si se viene usando un sierto criterio con el tema de las llaves seguirlo y no camiarlo. eje:
-    if ( a>b){
+   ``` if ( a>b){
         return 0;
     }else if ( a<b){
         return 3;
     }else {
         return 2;
-    }
-   * El error de la linea 48 es igual al error de la linea 41
-   * El error de la linea 53 se refiere a que una vez que termina una palabra en la terminacion de una linea de codigo al lado de la palbra va el; ej: return 0;
-   * El error de la linea se refiere a que no se llega a ver el comentario entero, es mejor que el largo sea menor o igual a 80 caracteres 
+    }´´´
+ * El error de la linea 48 es igual al error de la linea 41
+ * El error de la linea 53 se refiere a que una vez que termina una palabra en la terminacion de una linea de codigo al lado de la palbra va el; ej: return 0;
+ * El error de la linea se refiere a que no se llega a ver el comentario entero, es mejor que el largo sea menor o igual a 80 caracteres 
+ 
+3.**Paso2 **
+
+  3.**Errores de generacion 2**
+    ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte1.png)
+    ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte2.png)
+
+    
+    
+
+
+ 
    
-   
+ 
    
  
  
