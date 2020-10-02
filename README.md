@@ -4,10 +4,9 @@
 
   1.ItemA
   Compilacion del programa Hola Mundo con y sin valgrind
-    ![Hola Mundo Sin Valgrind](https://github.com/agustinaa235/tp0/blob/master/HolaMundoSinValgrind.png)
+    ![Compilacion del programa Hola mundo con y sin Valgrind](https://github.com/agustinaa235/tp0/blob/master/HolaMundoConYSinValgrind.png)
     
   
-   ![Hola Mundo Con Valgrind](/home/agustina/Imágenes/HolaMundoConValgrind.png)
     
  1.ItemB
  que es Valgrind?
