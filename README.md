@@ -27,13 +27,13 @@
  ¿El sizeof() de una struct de C es igual a la suma del sizeof() de cada uno sus elementos?
  Esto no es correcto
  Ejemplo:
- 
+ ```
  typedef struct Persona_t{
     int edad;
     char nombre;
     char apellido;
  }Persona_t;
- 
+ ```
  por separado la suma del size of de cada elemento que constituye la estructura es es 4 de la edad, 1 del nombre, y 1 del apellido sumando 6 bytes pero cuando se hace sizeof(Persona_t) = 12 bytes
  
  
@@ -54,15 +54,17 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
  ![Errores normas de programacion](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso1parte2.png)
  
  * El error de la linea 27 se refiere a que hay que dejar un espacio luego de usar un while ej: while (state != STATE_FINISHED)
- * El error de la linea 41 se refiere a que no hay qe dejar un doble espcail luego de usar el if ej: if( c== EOF)
- * El error de la linea 47 se refiere a a que no si se viene usando un sierto criterio con el tema de las llaves seguirlo y no camiarlo. eje:
-   ``` if ( a>b){
+ * El error de la linea 41 se refiere a que no hay qe dejar un doble espcail luego de usar el if ej: if (c== EOF)
+ * El error de la linea 47 se refiere a a que no si se viene usando un c}ierto criterio con el tema de las llaves seguirlo y no camiarlo. eje:
+   ```
+   if ( a>b){
         return 0;
     }else if ( a<b){
         return 3;
     }else {
         return 2;
-    }´´´
+    }
+    ```
  * El error de la linea 48 es igual al error de la linea 41
  * El error de la linea 53 se refiere a que una vez que termina una palabra en la terminacion de una linea de codigo al lado de la palbra va el; ej: return 0;
  * El error de la linea se refiere a que no se llega a ver el comentario entero, es mejor que el largo sea menor o igual a 80 caracteres 
@@ -70,13 +72,21 @@ Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no e
 3.**Paso2 **
 
   3.**Errores de generacion 2**
-    ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte1.png)
-    ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte2.png)
+   
+   ![Mejora de normas de programacion](https://github.com/agustinaa235/tp0/blob/master/mejorasDeVerificacionDeNormasPaso2.png)
 
+   podemos Observar que se realizaron los cambios mensionados en el paso 1 con respecto a los errores de normas de porgramacion 
+   se cambio:
+      * while(state != STATE_FINISHED) por while (state != STATE_FINISHED)
+      * if (  c == EOF) por if (c == EOF)
+      * return next_state ; por un return next_state; 
+      * if(strchr(delim_words, c) != NULL) por if (strchr(delim_words, c) != NULL)
+      * reduco la cantidad de palabras delcomentarios de la linea 5 en el paso2_wordscounter.h
+      
     
-    
 
-
+ ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte1.png)
+ ![Errores de compilacion del zip 2](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso2Parte2.png)
  
    
  
