@@ -99,16 +99,16 @@
   
   * El error en la linea 27 de main.c lo tira porque esa funcion la encuntra en el .h pero no se encuentra implemnetada en el .c
   
-  5.**Memory Leaks y Buffer Overflows** 
+ 5.**Memory Leaks y Buffer Overflows** 
   
   Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
-  Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas. Podemos observar que las prubeas de TDA de longname por ejemplo fallaron con valgrind
+  Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas. Podemos observar que las prubeas de TDA     de longname por ejemplo fallaron con valgrind
   ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte1Paso4.png)
   ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png)
   
   *una de las perdida de memoria es cuando se invoca a la funcion "static char wordscounter_next_state(wordscounter_t *self, char state, char c)"
   donde se hace un malloc donde se reserva un espacio de 7 punteros a char y esa memoria no es liberada.
-  * Hay otro error relacionado con el archivo, en donde se hace un fopne pero nunca un fclose.
+  * Hay otro error relacionado con el archivo, en donde se hace un fopen pero nunca un fclose.
   
   
   ![Errores de la prueba long-name](https://github.com/agustinaa235/tp0/blob/master/LongFileNameErrorPaso4.png)
@@ -119,6 +119,59 @@
   * Hay un archivo abierto y este nunca se cerro
   * Otro error que tira es en el llamado de la funcion memcpy donde se genera un buffer overfloat, que significa que se escirbio informacion en un espacio de         memoria en la cual el programador no tenia acceso. Esto se genero debido a que no hubo un chequeo sobre que tan largo es lo que uno va a copiar en que vas         con respecto al especio de memoria que tiene disponible para realizar la copia. 
     utilizando la funcion  strncpy se solucionaria este problema ya que estas funciones si permiten definir un limite nada mas que es responsabilidad del             programador utiliazar valores coherentes para la definicion de ese limite. Si se hubiera utilizado esta funcion con un limite acorde, no se produciria el         error de buffer overfloat.
+    
+  Que es Segmentation fault? 
+  
+  Es cuando cuando en un programa se quiere acceder a memoria en la cual el programador no tiene acceso
+  
+  Que es Buffer overfloat?
+  
+  Es cuando se quiere escribir informacion en un buffer/array y se termina escribiendo en lugares de memorias que se encuentran sub siguiente a donde se encuentra   el buffer ya que la informacion que se ingreso no fue  controlada en relacion con el tamanio del buffer por lo que se termina escribiendo en lugares que no       corresponden al buffer. 
+  
+6.**Codigo de retorno y salida estandar**
+    6. Mejoras:
+      *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
+      * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
+      *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "              ,.;:\n";
+    6. Comando Hxdump 
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/capturaArchivo.png)
+    El ultimo caracter es la d.
+    
+   6. uso de gdb y makefile
+   
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/make-gdbparte1.png)
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/make-gdbparte2.png)
+   
+   Comandos gbd:
+    * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
+    *list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
+    *list imprime mas lineas
+    * break 45 va a colocar un breakPoint en la linea correspondiente. En este cas en la 45
+    *run  input_single_word.txt va a correr con lo que se le paso como argumento, en ese caso el txt
+    *quit se utiliza este comando para salir de gdb.
+    
+   6. break 45
+    el debugger no se detiene en el break point 45 ya que ese esta definido sobre el archivo paso5_main.c y en ese archivo llega hasta la linea 30, en la 45 no       hay nada y es por eso que no frena. El mismo debugger aclara que no hay linea 45 en el archivo actual 
+    
+7.**Entrega exitosa **
+
+   7. Prueba con distintos archivos
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6primerArchivo.png)
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
+   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
+
+  
+   
+   
+
+
+
+   
+   
+
+  
+  
+  
     
   
 
