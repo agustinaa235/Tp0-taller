@@ -2,14 +2,12 @@
 
 1.**Paso 0**
 
-  1.ItemA
-  Compilacion del programa Hola Mundo con y sin valgrind
+  1.Compilacion del programa Hola Mundo con y sin valgrind
     ![Compilacion del programa Hola mundo con y sin Valgrind](https://github.com/agustinaa235/tp0/blob/master/HolaMundoConYSinValgrind.png)
     
   
     
- 1.ItemB
- que es Valgrind?
+ 1. que es Valgrind?
  
  Valgrind es una herramienta para los porgramadores en la cual nos ayuda a detectar perdidas de memoria en nuestro codigo.
  A su vez nso ayuda detectar fallas en el codigo. Por ejemplo cuando estamos accediendo a memoria que no pedimos o estamos
@@ -28,13 +26,27 @@
  Esto no es correcto
  Ejemplo:
  ```
- typedef struct Persona_t{
-    int edad;
-    char nombre;
-    char apellido;
- }Persona_t;
+   typedef struct Persona_t{
+      int edad;
+      char nombre;
+      char apellido;
+   }Persona_t;
  ```
- por separado la suma del size of de cada elemento que constituye la estructura es es 4 de la edad, 1 del nombre, y 1 del apellido sumando 6 bytes pero cuando se hace sizeof(Persona_t) = 12 bytes
+  por separado la suma del size of de cada elemento que constituye la estructura es es 4 de la edad, 1 del nombre, y 1 del apellido sumando 6 bytes pero cuando se   hace sizeof(Persona_t) = 12 bytes
+  
+  1. STDIN - STDoUT - STDERR
+  
+  La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
+  La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
+  El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero       tambien puede estar concetado por pantalla y mostrarlo por ahi.
+  
+  Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de      los  simbolos ">" y "<"
+  Las tuberias o pipe permiten enviar la salida estandar de un comando a la entrada estandar de otro. Se lo representa con el simbolo " | ". Su prinicpial           responsabilidad es poder concatenar comandos.
+  
+   Ejemplos de direccionamiento:
+    comando < comando2	Toma la entrada de comando2
+    comando > comando2	Envía la salida de comando a comando2; sobreescribe cualquier cosa de comando2
+    comando1 | comando2	pasa la salida de comando1 a la entrada de comando2 (pipe)
  
  
  
@@ -104,7 +116,7 @@
   Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
   Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas. Podemos observar que las prubeas de TDA     de longname por ejemplo fallaron con valgrind
   ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte1Paso4.png)
-  ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png)
+  ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png.png)
   
   *una de las perdida de memoria es cuando se invoca a la funcion "static char wordscounter_next_state(wordscounter_t *self, char state, char c)"
   donde se hace un malloc donde se reserva un espacio de 7 punteros a char y esa memoria no es liberada.
