@@ -139,8 +139,12 @@
     
    6. uso de gdb y makefile
    
-   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/make-gdbparte1.png)
-   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/make-gdbparte2.png)
+   ![compilacion con gdb](https://github.com/agustinaa235/tp0/blob/master/gdb.png)
+   ![comando info funciones](https://github.com/agustinaa235/tp0/blob/master/infoFunctions.png)
+   ![ambos comando de list](https://github.com/agustinaa235/tp0/blob/master/list.png)
+   ![comando de break run y quit](https://github.com/agustinaa235/tp0/blob/master/break-run-quit.png)
+
+
    
    Comandos gbd:
     * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
@@ -151,11 +155,17 @@
     *quit se utiliza este comando para salir de gdb.
     
    6. break 45
-    el debugger no se detiene en el break point 45 ya que ese esta definido sobre el archivo paso5_main.c y en ese archivo llega hasta la linea 30, en la 45 no       hay nada y es por eso que no frena. El mismo debugger aclara que no hay linea 45 en el archivo actual 
+    no frena en la linea 45 ya que en la funcion wordscounter_next_state antes si uno hace el seguimiento del codigo nunca entra al if (strchr(delim_words, c) !=     NULL) por lo que nunca entra a la linea 45. Es por este motio que falla la prueba ya que nunca llega a contabilizar la palabra
     
 7.**Entrega exitosa **
 
+   7. Mejoras
+    * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra
+    * se definieron los limitadores como contantes 
+    * cambio el valor del error
+    
    7. Prueba con distintos archivos
+   
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6primerArchivo.png)
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
