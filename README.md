@@ -1,4 +1,13 @@
-# tp0
+# Tp0
+
+Nombre: Agustina Segura
+Padron: 104222
+link github: https://github.com/agustinaa235/tp0- automatic!
+[GitHub](https://github.com/agustinaa235/tp0)
+
+# Introduccion
+
+El objetivo de este trabajo consiste en  aprender a usar las herramientas de trabajo. Estas serias sercom, hacer un repositorio en git, trabajar con markdown, hacer uso de un debugger (gbd) y ejecucuion con valgrined entre otras cosas.
 
 1.**Entorno de trabajo**
 
