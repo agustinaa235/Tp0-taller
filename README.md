@@ -92,8 +92,8 @@
    
    ![Mejora de normas de programacion](https://github.com/agustinaa235/tp0/blob/master/mejorasDeVerificacionDeNormasPaso2.png)
 
-   podemos Observar que se realizaron los cambios mensionados en el paso 1 con respecto a los errores de normas de programacion 
-   se cambio:
+  3. Mejoras: 
+  
    * while(state != STATE_FINISHED) por while (state != STATE_FINISHED)
    * if (  c == EOF) por if (c == EOF)
    * return next_state ; por un return next_state; 
@@ -158,23 +158,30 @@
   Es cuando se quiere escribir informacion en un buffer/array y se termina escribiendo en lugares de memorias que se encuentran sub siguiente a donde se encuentra   el buffer ya que la informacion que se ingreso no fue  controlada en relacion con el tamanio del buffer por lo que se termina escribiendo en lugares que no       corresponden al buffer. 
   
 6.**Codigo de retorno y salida estandar**
-    6. Mejoras:
-      *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
-      * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
-      *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "              ,.;:\n";
-    6. Comando Hxdump 
+   6. Mejoras:
+    
+   *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
+   * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
+   *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
+   
+   6. Fallas de invalid file y sing word
+   
+   6. Comando Hxdump 
+   
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/capturaArchivo.png)
     El ultimo caracter es la d.
     
    6. uso de gdb y makefile con el caso de prueba Single Word
    
    ![compilacion con gdb](https://github.com/agustinaa235/tp0/blob/master/gdb.png)
+   
    ![comando info funciones](https://github.com/agustinaa235/tp0/blob/master/infoFunctions.png)
+   
    ![ambos comando de list](https://github.com/agustinaa235/tp0/blob/master/list.png)
+   
    ![comando de break run y quit](https://github.com/agustinaa235/tp0/blob/master/break-run-quit.png)
 
 
-   
    Comandos gbd:
     * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
     *list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
@@ -188,7 +195,7 @@
     
 7.**Entrega exitosa **
 
-   7. Mejoras
+   7. Mejoras:
     * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra
     * se definieron los limitadores como contantes 
     * cambio el valor del error
@@ -196,7 +203,9 @@
    7. Prueba con distintos archivos
    
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6primerArchivo.png)
+   
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
+   
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
 
   
