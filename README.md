@@ -129,16 +129,16 @@
   
  5.**Memory Leaks y Buffer Overflows** 
     
-   5. Mejoras:
+  5. Mejoras:
    
    * Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
    
    Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas.  Se pudo observar que las prubas de TDA,    C LANGUAGE Y STDIN corrienron exitosamente pero fallaron al ser corridas con valgrind mientras que las pruebas de INVALID FILE, LONG FILE y SINGLE WORD no        corrieron exitosamente.
    
-   5.Ejecucion con valgrind de la prueba TDA
+  5.Ejecucion con valgrind de la prueba TDA
      ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte1Paso4.png)
      ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png.png)
-   5.Errores:
+  5.Errores:
    
    * Hay perdida de memoria. Una de las perdida de memoria es cuando se invoca a la funcion "static char wordscounter_next_state(wordscounter_t *self, char            state, char c)" en la cual se llama a la funcion malloc donde se reserva un espacio de 7 punteros a char y esa memoria nunca es liberada.
    * Hay otro error relacionado con el archivo, en donde se hace un fopen pero nunca un fclose.
@@ -159,7 +159,7 @@
   
   Es cuando cuando en un programa se quiere acceder a memoria/informacion en la cual el programador no tiene acceso, ya sea para lectura o escritura.
   
-  5.Que es Buffer overfloat?
+  5. Que es Buffer overfloat?
   
   Es cuando se quiere escribir informacion en un buffer/array y se termina escribiendo en lugares de memorias que se encuentran sub siguiente a donde se encuentra   el buffer ya que la informacion que se ingreso no fue  controlada en relacion con el tamanio del buffer por lo que se termina escribiendo en lugares que no       corresponden al buffer. 
   
@@ -212,13 +212,14 @@
    ![comando de break run y quit](https://github.com/agustinaa235/tp0/blob/master/break-run-quit.png)
 
 
-   Comandos gbd:
-    * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
-    * list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
-    * list imprime mas lineas
-    * break 45 va a colocar un breakPoint en la linea correspondiente. En este cas en la 45
-    * run  input_single_word.txt va a correr con lo que se le paso como argumento, en ese caso el txt
-    * quit se utiliza este comando para salir de gdb.
+   6.Comandos gbd:
+   
+   * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
+   * list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
+   * list imprime mas lineas
+   * break 45 va a colocar un breakPoint en la linea correspondiente. En este cas en la 45
+   * run  input_single_word.txt va a correr con lo que se le paso como argumento, en ese caso el txt
+   * quit se utiliza este comando para salir de gdb.
     
    6. break 45:
    
