@@ -39,11 +39,12 @@
   
   1. STDIN - STDOUT - STDERR
   
-  *La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
-  *La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
-  *El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero       tambien puede estar concetado por pantalla y mostrarlo por ahi.
+   *La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
+   *La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
+   *El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero      tambien puede estar concetado por pantalla y mostrarlo por ahi.
   
-  Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de     los  simbolos ">" y "<"
+  Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de     los  simbolos ">" y "<".
+  
   Las tuberias o pipe permiten enviar la salida estandar de un comando a la entrada estandar de otro. Se lo representa con el simbolo " | ". Su prinicpial           responsabilidad es poder concatenar comandos.
   
    Ejemplos de direccionamiento:
@@ -65,6 +66,7 @@
 
   El primer error que aparece es que no encuentra el tipo de dato wordscounter_t ya que nunca incluyo el archivo paso1_wordscounter.h donde ahi 
   estaria definido la estructura wordscounter_t y la firma de las distintas funciones.
+  
   Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no encontar el include del paso1_wordscounter.h no encuenta donde estan declaradas     esas funciones. En todos los casos, todos los errores se tratan son  errores de compilacion.
  
   2. Normas de programacion
@@ -124,9 +126,10 @@
     Error del compilador
   
  5.**Memory Leaks y Buffer Overflows** 
-    5. Mejoras:
-  
-   *Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
+    
+   5. Mejoras:
+   
+        *Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
    
    Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas.  Se pudo observar que las prubas de TDA,    C LANGUAGE Y STDIN corrienron exitosamente pero fallaron al ser corridas con valgrind mientras que las pruebas de INVALID FILE, LONG FILE y SINGLE WORD no        corrieron exitosamente.
    
@@ -158,11 +161,11 @@
   Es cuando se quiere escribir informacion en un buffer/array y se termina escribiendo en lugares de memorias que se encuentran sub siguiente a donde se encuentra   el buffer ya que la informacion que se ingreso no fue  controlada en relacion con el tamanio del buffer por lo que se termina escribiendo en lugares que no       corresponden al buffer. 
   
 6.**Codigo de retorno y salida estandar**
-   6. Mejoras:
-    
-   *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
-   * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
-   *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
+
+   6. Mejoras: 
+       *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
+       * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
+       *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
    
    6. Fallas de invalid file y sing word
    
@@ -196,9 +199,10 @@
 7.**Entrega exitosa **
 
    7. Mejoras:
-    * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra
-    * se definieron los limitadores como contantes 
-    * cambio el valor del error
+   
+      * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra
+      * se definieron los limitadores como contantes 
+      * cambio el valor del error
     
    7. Prueba con distintos archivos
    
