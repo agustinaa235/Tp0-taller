@@ -68,6 +68,8 @@
   estaria definido la estructura wordscounter_t y la firma de las distintas funciones.
   
   Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no encontar el include del paso1_wordscounter.h no encuenta donde estan declaradas     esas funciones. En todos los casos, todos los errores se tratan son  errores de compilacion.
+  
+  El sistema no reporto ningun warning ya que estos se traban de errores de compilacion.
  
   2. Normas de programacion
   ![Errores normas de programacion](https://github.com/agustinaa235/tp0/blob/master/ErroresPaso1parte2.png)
@@ -109,10 +111,10 @@
   * los primeros errores que aparecen es sobre size_t ya que no lo reconoce el tipo de dato, esto sucede por que no importo la biblioteca stdef.h con  #include       <stddef.h> en el paso2_wordscounter.h. 
   * El error de la linea 25 cuando no reconce FILE es porque no incluyo la biblioteca de stdio.h con  #include <stdio.h>
   * El error de la linea 30 significa que no incluyo la libreria de stdlib.h con #include<stdlib.h> cuando invoca la funcion malloc
-  * El error en la linea 20 del .h y en la 17.c significa que se esta definiendo a una misma funcion con diferentes firmas 
+  * El warning en la linea 20 del .h y en la 17.c significa que se esta definiendo a una misma funcion con diferentes firmas. Arregle primero el error de que no       reconocia el size_t y luego este error desaparacio por lo que tiene sentido que tire un warning.
   
-  Los primeros 3 erroresmencionados son errores de compilacion ya que en el preprocesador nunca agrego la libreria correspondiente.
-  El ultimo error mencionado tambien es del compilador.
+  Los primeros 3 errores mencionados son errores de compilacion ya que en el preprocesador nunca agrego la libreria correspondiente.
+  El ultimo es un warning.
   
  4.**Errores de generacion 3**
     4. Compilacion del paso3
@@ -190,15 +192,23 @@
    6. uso de gdb y makefile con el caso de prueba Single Word
    
    * Compilacion con gdb
+   
+   
    ![compilacion con gdb](https://github.com/agustinaa235/tp0/blob/master/gdb.png)
    
    * Comando info funciones
+   
+   
    ![comando info funciones](https://github.com/agustinaa235/tp0/blob/master/infoFunctions.png)
    
    * Comandos list
+   
+   
    ![ambos comando de list](https://github.com/agustinaa235/tp0/blob/master/list.png)
    
    * Comandos de break, run y quit
+   
+   
    ![comando de break run y quit](https://github.com/agustinaa235/tp0/blob/master/break-run-quit.png)
 
 
