@@ -1,7 +1,9 @@
 # Tp0
 
 Nombre: Agustina Segura
+
 Padron: 104222
+
 link github: https://github.com/agustinaa235/tp0- automatic!
 [GitHub](https://github.com/agustinaa235/tp0)
 
