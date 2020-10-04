@@ -47,6 +47,7 @@
   Las tuberias o pipe permiten enviar la salida estandar de un comando a la entrada estandar de otro. Se lo representa con el simbolo " | ". Su prinicpial           responsabilidad es poder concatenar comandos.
   
    Ejemplos de direccionamiento:
+   
     * comando < comando2	Toma la entrada de comando2
     * comando > comando2	Envía la salida de comando a comando2; sobreescribe cualquier cosa de comando2
     * comando1 | comando2	pasa la salida de comando1 a la entrada de comando2 (pipe)
