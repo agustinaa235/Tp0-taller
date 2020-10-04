@@ -129,7 +129,7 @@
     
    5. Mejoras:
    
-        *Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
+   *Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
    
    Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas.  Se pudo observar que las prubas de TDA,    C LANGUAGE Y STDIN corrienron exitosamente pero fallaron al ser corridas con valgrind mientras que las pruebas de INVALID FILE, LONG FILE y SINGLE WORD no        corrieron exitosamente.
    
@@ -137,6 +137,7 @@
      ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte1Paso4.png)
      ![Errores de la prueba TDA](https://github.com/agustinaa235/tp0/blob/master/TdaErrorParte2Paso4.png.png)
    5.Errores:
+   
    * Hay perdida de memoria. Una de las perdida de memoria es cuando se invoca a la funcion "static char wordscounter_next_state(wordscounter_t *self, char            state, char c)" en la cual se llama a la funcion malloc donde se reserva un espacio de 7 punteros a char y esa memoria nunca es liberada.
    * Hay otro error relacionado con el archivo, en donde se hace un fopen pero nunca un fclose.
   
@@ -163,16 +164,27 @@
 6.**Codigo de retorno y salida estandar**
 
    6. Mejoras: 
-       *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
-       * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
-       *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
    
-   6. Fallas de invalid file y sing word
+   *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
+   * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
+   *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
+   
+   6. Fallas de invalid file y single word
+    ![Salida Erronea](https://github.com/agustinaa235/tp0/blob/master/archivoInvalidoSalida.png)
+    
+   * El test de single word falla porque cuando se llama a la funcion wordscounter_next_state como el archivo posee una sola palabra y no tiene un limitador del        tipo ",.;:\n" nunca va a entrar a este if donde se suma las palabras ya que la funcion strchr va a devolver null.
+        ```
+        if (strchr(delim_words, c) != NULL) {
+              self->words++;
+              next_state = STATE_WAITING_WORD;
+        }```
+    * El test  de invalid file me costo ver donde esta el error con el serum, por lo que lo probe localmente a esa prueba y lo debuggie con gdb. Mientras iba           corriendo el programa con gbg vi que fallaba cuando en la funcion de wordscounter_process y rompia cuando invocaba a getc(text_file)  en donde gdb me             informa que no existe el archivo o directorio. A su vez investige que pasaba cuando la funcion getc recibia un error y decia que devuelve un EOF por lo que       siguiendo el codigo deberia no sumar ninguna palabra no 255. Yo creeria que el getc esta devolviendo 255 characteres del tipo limite (,.;:\n) para que entre       255 al if mencionado arriba.
    
    6. Comando Hxdump 
    
    ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/capturaArchivo.png)
-    El ultimo caracter es la d.
+   
+   * El ultimo caracter es la d.
     
    6. uso de gdb y makefile con el caso de prueba Single Word
    
@@ -187,30 +199,31 @@
 
    Comandos gbd:
     * info funcions imprime por pantalla el nombre de las funciones con su tipo de dato
-    *list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
-    *list imprime mas lineas
+    * list wordscounter_next_state imprime las lineas centradas al rededor de la funcion wordscounter_next_state
+    * list imprime mas lineas
     * break 45 va a colocar un breakPoint en la linea correspondiente. En este cas en la 45
-    *run  input_single_word.txt va a correr con lo que se le paso como argumento, en ese caso el txt
-    *quit se utiliza este comando para salir de gdb.
+    * run  input_single_word.txt va a correr con lo que se le paso como argumento, en ese caso el txt
+    * quit se utiliza este comando para salir de gdb.
     
-   6. break 45
-    no frena en la linea 45 ya que en la funcion wordscounter_next_state antes si uno hace el seguimiento del codigo nunca entra al if (strchr(delim_words, c) !=     NULL) por lo que nunca entra a la linea 45. Es por este motio que falla la prueba ya que nunca llega a contabilizar la palabra
+   6. break 45:
+   
+   no frena en la linea 45 ya que en la funcion wordscounter_next_state antes si uno hace el seguimiento del codigo nunca entra al if (strchr(delim_words, c)        != NULL) por lo que nunca entra a la linea 45. Es por este motio que falla la prueba ya que nunca llega a contabilizar la palabra
     
-7.**Entrega exitosa **
+7.**Entrega exitosa**
 
    7. Mejoras:
    
-      * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra
-      * se definieron los limitadores como contantes 
-      * cambio el valor del error
+   * Se mejoro la logica de la funcion wordscounter_next_state generando que se pueda contabilizar la palabra, lo que se agrego fue un chequeo cuando se                encontraba en el estado de STATE_IN_WORD primero verifica que si estamos en un EOF cambie el estado y a su vez cuente la palabra. Con eso se solucion las          fallas del archivo single word. Creeria que esto tambien afectaba al archivo invalido.
+   * se definieron los limitadores como contantes 
+   * cambio el valor del error
     
    7. Prueba con distintos archivos
    
-   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6primerArchivo.png)
+   ![Archivo 1](https://github.com/agustinaa235/tp0/blob/master/paso6primerArchivo.png)
    
-   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
+   ![Archivo 2](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
    
-   ![Ejecucion del comando hxdump](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
+   ![Archivo 3](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
 
   
    
