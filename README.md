@@ -1,6 +1,6 @@
 # tp0
 
-1.**Paso 0**
+1.**Entorno de trabajo**
 
   1.Compilacion del programa Hola Mundo con y sin valgrind
     ![Compilacion del programa Hola mundo con y sin Valgrind](https://github.com/agustinaa235/tp0/blob/master/HolaMundoConYSinValgrind.png)
@@ -17,10 +17,13 @@
  
    * valgrind --track-origins=yes ( detecta cuando encuentra variables sin inicializar)
    * valgrind --leak-check=yes ( activa un detector para en detalle de perdida de memoria)
+   * valgrind --verbose ( puede avisarle al programa de comportamiento inusual del programa)
+   * valgrind --log-file ( le informa a valgrind que tiene que mandar todos sus mensajes a un archivo)
+ 1. Sizeof()
  
  La funcion sizeof() nos devuelve la cantidad de bytes que ocupa el tipo de dato que le estemos pasando.
  El tamanio depende de la arquitectura y del compilador.
- En el caso de ser in int, sizeof(int) devuelve 4 bytes mientras que en el caso de pasarle el tipo de dato char 
+ En el caso de ser in int, para la arquitectura de mi computadora (intel), sizeof(int) devuelve 4 bytes mientras que en el caso de pasarle el tipo de dato char 
  nos devuelve 1 byte.
  ¿El sizeof() de una struct de C es igual a la suma del sizeof() de cada uno sus elementos?
  Esto no es correcto
@@ -32,15 +35,15 @@
       char apellido;
    }Persona_t;
  ```
-  por separado la suma del size of de cada elemento que constituye la estructura es es 4 de la edad, 1 del nombre, y 1 del apellido sumando 6 bytes pero cuando se   hace sizeof(Persona_t) = 12 bytes
+  por separado la suma del size of de cada elemento que constituye la estructura es es 4 de la edad, 1 del nombre, y 1 del apellido sumando 6 bytes pero cuando se   hace sizeof(Persona_t) = 12 bytes. Esto sucede porque la memoria esta organizada para poder ser buscada por multiplos de 4 entonces si se tiene una estructura     de todos elementos int la suma de los bytes de los elementos si va a ser la cantidad de bytes de la estructura porque un int ocupa 4 bytes pero si se tiene por   ejemplo un char, que es de q byte, para la estructra en su conjunto lo va aconsiderar como 4 bytes justmante por el tema de facilitar la busqueda en memoria.
   
-  1. STDIN - STDoUT - STDERR
+  1. STDIN - STDOUT - STDERR
   
-  La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
-  La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
-  El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero       tambien puede estar concetado por pantalla y mostrarlo por ahi.
+  *La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
+  *La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
+  *El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero       tambien puede estar concetado por pantalla y mostrarlo por ahi.
   
-  Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de      los  simbolos ">" y "<"
+  Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de     los  simbolos ">" y "<"
   Las tuberias o pipe permiten enviar la salida estandar de un comando a la entrada estandar de otro. Se lo representa con el simbolo " | ". Su prinicpial           responsabilidad es poder concatenar comandos.
   
    Ejemplos de direccionamiento:
@@ -50,9 +53,9 @@
  
  
  
- 2.**Paso 1**
+ 2.**Errores de generacion y normas de programacion**
  
-   2. **Sercom Errores de generacion y normas de programacion**
+   2. 
    
    Al subir el zip del paso 1 al sercom, cuando compila informa lo siguiente:
    
