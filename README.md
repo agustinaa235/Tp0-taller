@@ -39,9 +39,9 @@
   
   1. STDIN - STDOUT - STDERR
   
-   *La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
-   *La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
-   *El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero      tambien puede estar concetado por pantalla y mostrarlo por ahi.
+  * La entrada estandar (stdin) proporciona la entrada a un programa. Esta conectado con un teclado
+  * La salida estandar (stdout) proporciona la salida de datos de un programa luego de su ejecucuion. Esta concetado con una pantalla
+  * El error estandar (stderr) muestra los mensajes de error en caso en que su ejecucion falle. Cuando se produce un error, este envia ese error al archivo pero       tambien puede estar concetado por pantalla y mostrarlo por ahi.
   
   Las redireciones consiste en trasladar informacion de un tipo de estandar a otro.ej: de la entrada estandar a la salida estandar. Esto se realiza por medio de     los  simbolos ">" y "<".
   
@@ -129,7 +129,7 @@
     
    5. Mejoras:
    
-   *Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
+   * Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
    
    Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas.  Se pudo observar que las prubas de TDA,    C LANGUAGE Y STDIN corrienron exitosamente pero fallaron al ser corridas con valgrind mientras que las pruebas de INVALID FILE, LONG FILE y SINGLE WORD no        corrieron exitosamente.
    
@@ -165,9 +165,9 @@
 
    6. Mejoras: 
    
-   *se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
+   * se cerro el archivo que se abrio ( se invoco a la funcion fclose() antes de finalizar con el programa
    * Ya no se hace uso de la funcion memcpy en donde esta no verificaba el tamanio del buffer en relacion a la informacion que le llegaba
-   *Unya no estamas y se lo reemplazo por cambio que se hizo fue que la memoria que se pedia en la variable delim_words char* const char* delim_words = "             ,.;:\n";
+   * Se cambio el pedido de memoria en la funcion wordscounter_next_state en la variable que invocaba a la funcion malloc y se la cambio por delim_words char*          const char* delim_words = ",.;:\n" donde ya no se tenia que pedir memoria.
    
    6. Fallas de invalid file y single word
     ![Salida Erronea](https://github.com/agustinaa235/tp0/blob/master/archivoInvalidoSalida.png)
@@ -177,8 +177,9 @@
         if (strchr(delim_words, c) != NULL) {
               self->words++;
               next_state = STATE_WAITING_WORD;
-        }```
-    * El test  de invalid file me costo ver donde esta el error con el serum, por lo que lo probe localmente a esa prueba y lo debuggie con gdb. Mientras iba           corriendo el programa con gbg vi que fallaba cuando en la funcion de wordscounter_process y rompia cuando invocaba a getc(text_file)  en donde gdb me             informa que no existe el archivo o directorio. A su vez investige que pasaba cuando la funcion getc recibia un error y decia que devuelve un EOF por lo que       siguiendo el codigo deberia no sumar ninguna palabra no 255. Yo creeria que el getc esta devolviendo 255 characteres del tipo limite (,.;:\n) para que entre       255 al if mencionado arriba.
+        }
+        
+   * El test  de invalid file me costo ver donde esta el error con el serum, por lo que lo probe localmente a esa prueba y lo debuggie con gdb. Mientras iba            corriendo el programa con gbg vi que fallaba cuando en la funcion de wordscounter_process y rompia cuando invocaba a getc(text_file)  en donde gdb me              informa que no existe el archivo o directorio. A su vez investige que pasaba cuando la funcion getc recibia un error y decia que devuelve un EOF por lo que        siguiendo el codigo deberia no sumar ninguna palabra no 255. Yo creeria que el getc esta devolviendo 255 characteres del tipo limite (,.;:\n) para que entre      255 al if mencionado arriba.
    
    6. Comando Hxdump 
    
@@ -188,12 +189,16 @@
     
    6. uso de gdb y makefile con el caso de prueba Single Word
    
+   * Compilacion con gdb
    ![compilacion con gdb](https://github.com/agustinaa235/tp0/blob/master/gdb.png)
    
+   * Comando info funciones
    ![comando info funciones](https://github.com/agustinaa235/tp0/blob/master/infoFunctions.png)
    
+   * Comandos list
    ![ambos comando de list](https://github.com/agustinaa235/tp0/blob/master/list.png)
    
+   * Comandos de break, run y quit
    ![comando de break run y quit](https://github.com/agustinaa235/tp0/blob/master/break-run-quit.png)
 
 
@@ -224,7 +229,12 @@
    ![Archivo 2](https://github.com/agustinaa235/tp0/blob/master/paso6SegundoArchivo.png)
    
    ![Archivo 3](https://github.com/agustinaa235/tp0/blob/master/paso6TercerArchivo.png)
-
+   
+   7. Submission History
+   
+   ![Sudmission History](https://github.com/agustinaa235/tp0/blob/master/submissionHistory.png)
+   ![Sudmission History](https://github.com/agustinaa235/tp0/blob/master/submissionHistoryParte2.png)
+   
   
    
    
