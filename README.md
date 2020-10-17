@@ -32,10 +32,9 @@ El objetivo de este trabajo consiste en  aprender a usar las herramientas de tra
    * valgrind --log-file ( le informa a valgrind que tiene que mandar todos sus mensajes a un archivo)
  1. Sizeof()
  
- La funcion sizeof() nos devuelve la cantidad de bytes que ocupa el tipo de dato que le estemos pasando.
+ Sizeof() es un operador que nos devuelve la cantidad de bytes que ocupa el tipo de dato que le estemos pasando.
  El tamanio depende de la arquitectura y del compilador.
- En el caso de ser in int, para la arquitectura de mi computadora (intel), sizeof(int) devuelve 4 bytes mientras que en el caso de pasarle el tipo de dato char 
- nos devuelve 1 byte.
+ En el caso de ser un int, para la arquitectura de mi computadora (intel) que es de 64 bites, sizeof(int) devuelve 4 bytes mientras que en el caso de pasarle el    tipo de dato char nos devuelve 1 byte. Si hubieramos utilizado un long ahi ya cambiaria porque para una arcquitectrura de 64 ocupa 8 bytes mientras que para la de 32 ocupa 4 bytes.
  ¿El sizeof() de una struct de C es igual a la suma del sizeof() de cada uno sus elementos?
  Esto no es correcto
  Ejemplo:
@@ -125,7 +124,7 @@ El objetivo de este trabajo consiste en  aprender a usar las herramientas de tra
   * El warning en la linea 20 del .h y en la 17.c significa que se esta definiendo a una misma funcion con diferentes firmas. Arregle primero el error de que no       reconocia el size_t y luego este error desaparacio por lo que tiene sentido que tire un warning.
   
   Los primeros 3 errores mencionados son errores de compilacion ya que en el preprocesador nunca agrego la libreria correspondiente.
-  El ultimo es un warning.
+  Se puede ver que se reportaron warnigns pero como se compilo con el flag -Werror estos fueron tratados como errores.
   
  4.**Errores de generacion 3**
     4. Compilacion del paso3
@@ -143,6 +142,7 @@ El objetivo de este trabajo consiste en  aprender a usar las herramientas de tra
   5. Mejoras:
    
    * Se arreglo el error de la linea 27 del main.c implementando la funcion void wordscounter_destroy(wordscounter_t *self) en el archivo paso4_wordscounter.c
+     lo que habia sucedo es que la funcion estaba declarada en el .h pero no definida en el .c
    
    Se volvio a correr el serum con esta nueva modoficacion y se logro una compilacion exitosa y se corrieron las pruebas.  Se pudo observar que las prubas de TDA,    C LANGUAGE Y STDIN corrienron exitosamente pero fallaron al ser corridas con valgrind mientras que las pruebas de INVALID FILE, LONG FILE y SINGLE WORD no        corrieron exitosamente.
    
