@@ -78,6 +78,8 @@ El objetivo de este trabajo consiste en  aprender a usar las herramientas de tra
   estaria declarada la estructura wordscounter_t y la firma de las distintas funciones. En este caso no encreuntra la declaracion por lo que seria un error de      compilacion. 
   
   Los siguientes errores que aparecen, sucede lo mismo que con el primero, al no encontar el include del paso1_wordscounter.h no encuenta donde estan declaradas     esas funciones. En todos los casos, todos los errores se tratan son  errores de compilacion porque justamente no encuentra la declaracion de cada una.
+  
+  
   2. Warnigs
   
   El sistema no reporto ningun warning ya que estos fueron tratados como errores en la compilacion de la entrega. Esto se debe a que se compilo con el flag -Werror en la cual hace que todos los warnings sean tratados como errores.
